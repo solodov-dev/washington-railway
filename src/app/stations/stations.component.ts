@@ -31,4 +31,8 @@ export class StationsComponent implements OnChanges {
       station.name.includes(term)
     );
   }
+
+  toggleStation(station: Station): void {
+    station.selected = !station.selected;
+  }
 }

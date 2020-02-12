@@ -16,7 +16,7 @@ export class ApiService {
       map(response =>
         response["Lines"].map((line: any) => {
           return {
-            code: line.LineCode,
+            code: line.LineCode.toLowerCase(),
             name: line.DisplayName.toLowerCase()
           };
         })
@@ -31,12 +31,13 @@ export class ApiService {
         map(response =>
           response["Stations"].map((station: any) => {
             return {
+              selected: false,
               code: station.Code.toLowerCase(),
               name: station.Name.toLowerCase(),
-              address: station.Address
             };
           })
         )
       );
   }
+
 }

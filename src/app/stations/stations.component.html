@@ -1,4 +1,15 @@
-<input #input type=text placeholder="Filter stations" (input)="filterStations(input.value)"/>
+<input
+  #input
+  type="text"
+  placeholder="Filter stations"
+  (input)="filterStations(input.value)"
+/>
 <ul>
-  <li *ngFor="let station of stations">{{ station.name }}</li>
+  <li *ngFor="let station of stations" (click)="toggleStation(station)">
+    {{ station.name }}
+    <app-station-info
+      *ngIf="station.selected"
+      [station]="station"
+    ></app-station-info>
+  </li>
 </ul>
