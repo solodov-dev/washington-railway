@@ -1,0 +1,11 @@
+<ul>
+  <li
+    *ngFor="let line of lines"
+    class="line"
+    [style.background-color]="colors[line.name]"
+    (click)="selectLine(line)"
+  >
+    {{ line.name }}
+  </li>
+</ul>
+<app-stations *ngIf="selectedLine" [line]="selectedLine"> </app-stations>
