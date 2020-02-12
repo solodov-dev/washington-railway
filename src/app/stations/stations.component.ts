@@ -8,8 +8,10 @@ import { ApiService } from "../api.service";
   templateUrl: "./stations.component.html",
   styleUrls: ["./stations.component.scss"]
 })
+
 export class StationsComponent implements OnChanges {
   @Input() line: Line;
+  STATIONS: Station[];
   stations: Station[];
 
   constructor(private apiService: ApiService) {}
@@ -21,6 +23,12 @@ export class StationsComponent implements OnChanges {
   getStations(): void {
     this.apiService
       .getStations(this.line)
-      .subscribe(res => (this.stations = res));
+      .subscribe(res => (this.STATIONS = this.stations = res));
+  }
+
+  filterStations(term: string): void {
+    this.stations = this.STATIONS.filter(station =>
+      station.name.includes(term)
+    );
   }
 }
