@@ -1,8 +1,9 @@
 import { Injectable } from "@angular/core";
 import { Line } from "./line";
 import { Station } from "./station";
+import { Train } from "./train";
 import { HttpClient } from "@angular/common/http";
-import { baseUrl, httpOptions } from "./api.config";
+import { railUrl, httpOptions, predictionUrl } from "./api.config";
 import { map } from "rxjs/operators";
 
 @Injectable({
@@ -12,7 +13,7 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   getLines() {
-    return this.http.get<Line[]>(`${baseUrl}/jLines`, httpOptions).pipe(
+    return this.http.get<Line[]>(`${railUrl}/jLines`, httpOptions).pipe(
       map(response =>
         response["Lines"].map((line: any) => {
           return {
@@ -26,7 +27,7 @@ export class ApiService {
 
   getStations(line: Line) {
     return this.http
-      .get<Station[]>(`${baseUrl}/jStations?LineCode=${line.code}`, httpOptions)
+      .get<Station[]>(`${railUrl}/jStations?LineCode=${line.code}`, httpOptions)
       .pipe(
         map(response =>
           response["Stations"].map((station: any) => {
@@ -39,5 +40,21 @@ export class ApiService {
         )
       );
   }
-
+  
+getNextTrains(station: Station) {
+    return this.http
+      .get<Train[]>(`${predictionUrl}/${station.code}`, httpOptions)
+      .pipe(
+        map(response =>
+          response["Trains"].map((train: any) => {
+            return {
+              cars: train.Car,
+              destination: train.DestinationName,
+              location: train.LocationName,
+              timeToArrival: train.Min
+            };
+          })
+        )
+      );
+  }
 }

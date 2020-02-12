@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Station } from '../station';
+import { Train } from '../train';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-station-info',
@@ -10,9 +12,16 @@ import { Station } from '../station';
 export class StationInfoComponent implements OnInit {
   @Input() station: Station;
 
-  constructor() { }
+  nextTrains: Train[];
+
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
+    this.getNextTrains(this.station);
+  }
+
+  getNextTrains(station: Station): void {
+    this.apiService.getNextTrains(station).subscribe(res => this.nextTrains = res)
   }
 
 }

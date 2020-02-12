@@ -1,6 +1,7 @@
 import { HttpHeaders } from "@angular/common/http";
 
-const baseUrl: string = "https://api.wmata.com/Rail.svc/json";
+const railUrl: string = "https://api.wmata.com/Rail.svc/json";
+const predictionUrl: string = "https://api.wmata.com/StationPrediction.svc/json/GetPrediction"
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -8,4 +9,4 @@ const httpOptions = {
   })
 };
 
-export { baseUrl, httpOptions };
+export { railUrl, predictionUrl, httpOptions };
