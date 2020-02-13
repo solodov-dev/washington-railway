@@ -17,7 +17,7 @@ colors = {
     orange: "#fcb450",
     red: "#fc5053",
     silver: "#d8d8d8",
-    yellow: "#fcf950"
+    yellow: "#fce807"
   }
 
   constructor(private apiService: ApiService) {}

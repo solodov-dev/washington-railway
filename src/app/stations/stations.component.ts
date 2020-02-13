@@ -11,6 +11,8 @@ import { ApiService } from "../api.service";
 
 export class StationsComponent implements OnChanges {
   @Input() line: Line;
+  @Input() color: string;
+
   STATIONS: Station[];
   stations: Station[];
 

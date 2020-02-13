@@ -1,4 +1,15 @@
-.line {
+.tabs {
+  display: flex;
+  align-items: center;
+}
+
+.tab {
+  text-transform: capitalize;
   padding: 1em;
-  display: inline;
+  cursor: pointer;
+  border-bottom: 5px solid;
+}
+
+.tab:hover {
+  background-color: rgb(233, 233, 233);
 }

@@ -1,11 +1,16 @@
-<ul>
+<ul class="tabs">
   <li
     *ngFor="let line of lines"
-    class="line"
-    [style.background-color]="colors[line.name]"
+    class="tab"
+    [style.border-color]="colors[line.name]"
     (click)="selectLine(line)"
   >
     {{ line.name }}
   </li>
 </ul>
-<app-stations *ngIf="selectedLine" [line]="selectedLine"> </app-stations>
+<app-stations
+  *ngIf="selectedLine"
+  [line]="selectedLine"
+  [color]="colors[selectedLine.name]"
+>
+</app-stations>
