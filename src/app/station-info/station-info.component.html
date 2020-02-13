@@ -1,4 +1,21 @@
 <div>
-  <h3>Next trains: </h3>
-  <div *ngFor="let train of nextTrains">{{ train.destination}}</div>
+  <h3 class="sub-header">Next trains:</h3>
+  <ul>
+    <li class="train-info" *ngFor="let train of nextTrains">
+      <ul>
+        <li>
+          <i class="material-icons">near_me</i>Destination: {{ train.destination }}
+        </li>
+        <li>
+          <i class="material-icons">gps_fixed</i>Arriving at: {{ train.location }}
+        </li>
+        <li [ngSwitch]="train.timeToArrival">
+          <i class="material-icons">access_time</i>
+          <span *ngSwitchCase="'ARR'">Arriving now</span>
+          <span *ngSwitchCase="'BRD'">Boarding now</span>
+          <span *ngSwitchDefault>Arrives in {{ train.timeToArrival }} min</span>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>

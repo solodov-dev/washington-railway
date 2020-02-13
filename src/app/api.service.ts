@@ -48,7 +48,6 @@ getNextTrains(station: Station) {
         map(response =>
           response["Trains"].map((train: any) => {
             return {
-              cars: train.Car,
               destination: train.DestinationName,
               location: train.LocationName,
               timeToArrival: train.Min
