@@ -1,3 +1,10 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .tabs {
   display: flex;
   align-items: center;
@@ -13,4 +20,16 @@
 
 .tab:hover {
   background-color: rgb(233, 233, 233);
+}
+
+@media screen and (max-width: 450px) {
+  .tabs {
+    flex-direction: column;
+    width: 80vw;
+    align-content: center;
+  }
+
+  .tab {
+    width: 100%;
+  }
 }
