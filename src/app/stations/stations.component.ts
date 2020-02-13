@@ -30,7 +30,7 @@ export class StationsComponent implements OnChanges {
 
   filterStations(term: string): void {
     this.stations = this.STATIONS.filter(station =>
-      station.name.includes(term)
+      station.name.includes(term.toLowerCase())
     );
   }
 
