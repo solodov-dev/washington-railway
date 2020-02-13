@@ -10,6 +10,7 @@ import { ApiService } from "../api.service";
 export class LinesComponent implements OnInit {
   lines: Line[];
   selectedLine: Line;
+  loading: boolean = false;
 
 colors = {
     blue: "#508cfc",
@@ -27,7 +28,12 @@ colors = {
   }
 
   getLines(): void {
-    this.apiService.getLines().subscribe((res: Line[]) => (this.lines = res));
+    this.loading = true;
+    this.apiService.getLines().subscribe((res: Line[]) => 
+      {
+        this.lines = res;
+        this.loading = false;
+      });
   }
   
   selectLine(line: Line): void {

@@ -14,7 +14,8 @@ export class StationsComponent implements OnChanges {
   @Input() color: string;
 
   STATIONS: Station[];
-  stations: Station[];
+  filteredStations: Station[];
+  loading: boolean = false;
 
   constructor(private apiService: ApiService) {}
 
@@ -23,13 +24,17 @@ export class StationsComponent implements OnChanges {
   }
 
   getStations(): void {
+    this.loading = true;
     this.apiService
       .getStations(this.line)
-      .subscribe(res => (this.STATIONS = this.stations = res));
+      .subscribe(res => {
+        this.STATIONS = this.filteredStations = res;
+        this.loading = false;
+      });
   }
 
   filterStations(term: string): void {
-    this.stations = this.STATIONS.filter(station =>
+    this.filteredStations = this.STATIONS.filter(station =>
       station.name.includes(term.toLowerCase())
     );
   }

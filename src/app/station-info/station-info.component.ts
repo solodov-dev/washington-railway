@@ -13,6 +13,7 @@ export class StationInfoComponent implements OnInit {
   @Input() station: Station;
 
   nextTrains: Train[];
+  loading: boolean = false;
 
   constructor(private apiService: ApiService) { }
 
@@ -21,7 +22,12 @@ export class StationInfoComponent implements OnInit {
   }
 
   getNextTrains(station: Station): void {
-    this.apiService.getNextTrains(station).subscribe(res => this.nextTrains = res)
+    this.loading = true;
+    this.apiService.getNextTrains(station).subscribe(res => 
+      {
+        this.nextTrains = res
+        this.loading = false;
+      })
   }
 
 }

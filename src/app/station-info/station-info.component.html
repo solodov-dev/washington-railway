@@ -1,4 +1,5 @@
 <div>
+  <ngx-loading [show]="loading"></ngx-loading>
   <h3 class="sub-header">Next trains:</h3>
   <ul>
     <li class="train-info" *ngFor="let train of nextTrains">
@@ -19,3 +20,4 @@
     </li>
   </ul>
 </div>
+  <ngx-loading [show]="loading"></ngx-loading>
