@@ -1,11 +1,11 @@
 <div class="stations">
-  <ngx-loading [show]="loading"></ngx-loading>
   <input
     #input
     type="text"
     placeholder="Filter stations"
     (input)="filterStations(input.value)"
   />
+  <app-loader *ngIf="loading" ></app-loader>
   <ul class="stations__list" [style.border-color]="color">
     <li
       class="station"
@@ -22,4 +22,3 @@
     </li>
   </ul>
 </div>
-  <ngx-loading [show]="loading"></ngx-loading>

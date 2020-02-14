@@ -1,5 +1,5 @@
 <div class="main">
-  <ngx-loading [show]="loading"></ngx-loading>
+  <app-loader *ngIf="loading"></app-loader>
   <ul class="tabs">
     <li
       *ngFor="let line of lines"
@@ -17,4 +17,3 @@
   >
   </app-stations>
 </div>
-  <ngx-loading [show]="loading"></ngx-loading>

@@ -1,6 +1,6 @@
 <div>
-  <ngx-loading [show]="loading"></ngx-loading>
   <h3 class="sub-header">Next trains:</h3>
+  <app-loader *ngIf="loading"></app-loader>
   <ul>
     <li class="train-info" *ngFor="let train of nextTrains">
       <ul>
@@ -20,4 +20,3 @@
     </li>
   </ul>
 </div>
-  <ngx-loading [show]="loading"></ngx-loading>
